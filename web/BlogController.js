@@ -83,7 +83,6 @@ path.set("/editBlog", editBlog);
 
 function queryTag(tag, blogId) {
     tagsDao.queyrTag(tag, function (result) {
-        console.log()
        if (result == null || result.length == 0) {
             insertTag(tag, blogId);
        } else {

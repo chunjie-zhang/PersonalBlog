@@ -61,9 +61,7 @@ function getResult(blogList, len, response) {
 
 function queryByTagCount(request, response) {
     var params = url.parse(request.url, true).query;
-    console.log(params.tag);
     tagsDao.queyrTag(params.tag, function (result) {
-        console.log(result);
         tagBlogMappingDao.queryByTagCount(result[0].id, function (result) {
             response.writeHead(200);
             response.write(respUtil.writeResult("success", "查询成功", result));

@@ -2,7 +2,7 @@ var randomTags = new Vue({
     el: "#random_tags",
     data: {
         tags: []
-    }, 
+    },
     computed: {
         randomColor: function () {
             return function () {
@@ -77,12 +77,14 @@ var newComments = new Vue({
             method: "get",
             url: "/queryNewComments"
         }).then(function (resp) {
-            console.log(resp);
             var result = [];
             for (var i = 0 ; i < resp.data.data.length ; i ++) {
                 var temp = {};
                 temp.name = resp.data.data[i].user_name;
-                temp.date = resp.data.data[i].ctime;
+                var time =  resp.data.data[i].ctime*1000
+                let d = new Date(time);
+                let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                temp.date = batchTime;
                 temp.comment = resp.data.data[i].comments;
                 result.push(temp);
             }

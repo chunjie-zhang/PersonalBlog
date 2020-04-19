@@ -8,7 +8,7 @@ var blogDetail = new Vue({
         views: ""
     },
     computed: {
-        
+
     },
     created: function () {
         var searcheUrlParams = location.search.indexOf("?") > -1 ? location.search.split("?")[1].split("&") : "";
@@ -33,7 +33,10 @@ var blogDetail = new Vue({
             var result = resp.data.data[0];
             blogDetail.title = result.title;
             blogDetail.content = result.content;
-            blogDetail.ctime = result.ctime;
+            var time =  result.ctime*1000
+            let d = new Date(time);
+            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            blogDetail.ctime = batchTime;
             blogDetail.tags = result.tags;
             blogDetail.views = result.views;
         }).catch(function (resp) {
@@ -55,7 +58,6 @@ var sendComment = new Vue({
                     method: "get",
                     url: "/queryRandomCode"
                 }).then(function (resp) {
-                    console.log(resp);
                     sendComment.vcode = resp.data.data.data;
                     sendComment.rightCode = resp.data.data.text;
                 });

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>个人博客</title>
+    <link rel="icon" href="../img/头像.icon">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/blog_detail.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -28,7 +29,7 @@
         <div class="content_left">
             <div class="blog" id="blog_detail">
                 <div class="blog_title">{{title}}</div>
-                <div class="blog_msg">作者：Panda 标签：{{tags}} 发布于：{{ctime}} 浏览（{{views}}）</div>
+                <div class="blog_msg">作者：kevin 标签：{{tags}} 发布于：{{ctime}} <img class="img_svg" src="../img/view.svg">（{{views}}）</div>
                 <div class="blog_content" v-html="content"></div>
             </div>
 
@@ -49,7 +50,7 @@
                     <input type="text" placeholder="邮箱（评论被回复时你能收到通知）" id="comment_email">
                 </div>
                 <div>
-                    <textarea placeholder="无意义的内容我可能不会回复你" id="comment_content"></textarea>
+                    <textarea placeholder="无意义的内容我可能不会回复你哦" id="comment_content"></textarea>
                 </div>
                 <div>
                     <input type="text" placeholder="验证码" id="comment_code">
@@ -95,20 +96,29 @@
     </div>
     <footer class="footer">
         <ul>
-            <li>C/C++</li>
-            <li>CSS/DIV</li>
-            <li>java</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
-            <li>C/C++</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>es6</li>
+            <li>jQuery</li>
+            <li>bootStrap</li>
+            <li>Vue</li>
+            <li>React</li>
+            <li>移动端适配</li>
+            <li>微信小程序</li>
+            <li>taro</li>
+            <li>webGL</li>
+            <li>数据结构/算法</li>
+            <li>计算机网络</li>
+            <li>操作系统</li>
+            <li>Linux</li>
+            <li>mysql</li>
+            <li>mangDB</li>
+            <li>redius</li>
         </ul>
-        <p>Copyright © 2010-2017 巴拉巴拉的</p>
+        <p>Copyright © 2010-2020 张春节个人博客 All rights reserved.</p>
     </footer>
     <script src="./js/blog_detail.js"></script>
     <script src="./js/base.js"></script>

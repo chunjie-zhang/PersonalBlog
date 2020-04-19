@@ -50,7 +50,6 @@ var sendComment = new Vue({
                     method: "get",
                     url: "/queryRandomCode"
                 }).then(function (resp) {
-                    console.log(resp);
                     sendComment.vcode = resp.data.data.data;
                     sendComment.rightCode = resp.data.data.text;
                 });
