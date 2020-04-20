@@ -8,7 +8,7 @@ var blogDetail = new Vue({
         views: ""
     },
     computed: {
-        
+
     },
     created: function () {
         var searcheUrlParams = location.search.indexOf("?") > -1 ? location.search.split("?")[1].split("&") : "";
@@ -33,7 +33,10 @@ var blogDetail = new Vue({
             var result = resp.data.data[0];
             blogDetail.title = result.title;
             blogDetail.content = result.content;
-            blogDetail.ctime = result.ctime;
+            var time =  result.ctime*1000
+            let d = new Date(time);
+            let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            blogDetail.ctime = batchTime;
             blogDetail.tags = result.tags;
             blogDetail.views = result.views;
         }).catch(function (resp) {
@@ -55,7 +58,6 @@ var sendComment = new Vue({
                     method: "get",
                     url: "/queryRandomCode"
                 }).then(function (resp) {
-                    console.log(resp);
                     sendComment.vcode = resp.data.data.data;
                     sendComment.rightCode = resp.data.data.text;
                 });
@@ -132,6 +134,13 @@ var blogComments = new Vue({
             url: "/queryCommentsByBlogId?bid=" + bid
         }).then(function(resp){
             blogComments.comments = resp.data.data;
+            for (var i = 0 ; i <  blogComments.comments.length ; i ++) {
+                var time =   blogComments.comments[i].ctime*1000
+                let d = new Date(time);
+                let batchTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                blogComments.comments[i].ctime = batchTime;
+
+            }
             for (var i = 0 ; i < blogComments.comments.length ; i ++) {
                 if (blogComments.comments[i].parent > -1) {
                     blogComments.comments[i].options = "回复@" + blogComments.comments[i].parent_name;
